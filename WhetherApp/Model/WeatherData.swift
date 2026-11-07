@@ -1,0 +1,62 @@
+//
+//  WeatherData.swift
+//  WhetherApp
+//
+//  Created by Мария Александрова on 14.09.2026.
+//
+
+import Foundation
+
+struct WeatherData: Identifiable, Decodable {
+    let id: Int
+    let name: String
+    let cod: Int
+    let timezone: Int
+    let dt: Int
+    let visibility: Int
+    let base: String
+    let weather: [Weather]
+    let clouds: Clouds
+    let main: Main
+    let wind: Wind
+    let sys: Sys
+    let coord: Coord
+        
+    struct Weather: Identifiable, Decodable {
+        let id: Int
+        let main: String
+        let description: String
+        let icon: String
+    }
+    
+    struct Clouds: Decodable {
+        let all: Int
+    }
+    
+    struct Main: Decodable {
+        let temp: Double
+        let feelsLike: Double
+        let tempMin: Double
+        let tempMax: Double
+        let pressure: Double
+        let humidity: Int
+        let seaLevel: Int
+        let grndLevel: Int
+    }
+    
+    struct Wind: Decodable {
+        let speed: Double
+        let deg: Int
+        let gust: Double
+    }
+    
+    struct Sys: Decodable {
+        let sunrise: TimeInterval
+        let sunset: TimeInterval
+    }
+    
+    struct Coord: Decodable {
+        let lat: Double
+        let lon: Double
+    }
+}
